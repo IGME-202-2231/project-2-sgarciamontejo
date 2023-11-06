@@ -6,8 +6,8 @@ _REPLACE OR REMOVE EVERYTING BETWEEN "\_"_
 
 ### Student Info
 
--   Name: _YOUR NAME_
--   Section: _##_
+-   Name: _Sebastian Garcia Montejo_
+-   Section: _04_
 
 ## Simulation Design
 
