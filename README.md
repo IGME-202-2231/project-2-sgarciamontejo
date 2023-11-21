@@ -11,7 +11,8 @@ _REPLACE OR REMOVE EVERYTING BETWEEN "\_"_
 
 ## Simulation Design
 
-_A brief explanation of your simulation._
+_Bees wandering around the scene looking for pollen. Player can interact with the scene by placing flowers and bears, which will change the behavior of the bees.
+They will be attracted to the flowers, and will run away from the bear. The bear will attack the hives of the bees, and if he is successful in destroying the hive, all the bees on screen will attack the bear._
 
 ### Controls
 
@@ -89,14 +90,12 @@ _A brief explanation of this agent._
 
 ## Sources
 
--   _List all project sources here –models, textures, sound clips, assets, etc._
+-   _https://www.flaticon.com/free-icon/bee_1328765_
 -   _If an asset is from the Unity store, include a link to the page and the author’s name_
 
 ## Make it Your Own
 
-- _List out what you added to your game to make it different for you_
-- _If you will add more agents or states make sure to list here and add it to the documention above_
-- _If you will add your own assets make sure to list it here and add it to the Sources section
+- _Player will be able to left click to add flowers, and right click to add bears. Both of which will change the behavior of the bees._
 
 ## Known Issues
 
