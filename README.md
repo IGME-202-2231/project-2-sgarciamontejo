@@ -20,20 +20,20 @@ They will be attracted to the flowers, and will run away from the bear. The bear
     -   _Include how to preform each action ( keyboard, mouse, UI Input )_
     -   _Include what impact an action has in the simulation ( if is could be unclear )_
 
-## _Agent 1 Name_
+## _Bee_
 
-_A brief explanation of this agent._
+_The bee is spawned in by the AgentManager, which will wander around the scene seeking flowers and separating from other bees._
 
-### _State 1 Name_
+### _Passive_
 
-**Objective:** _A brief explanation of this state's objective._
+**Objective:** _Wander around the screen._
 
 #### Steering Behaviors
 
 - _List all behaviors used by this state_
    - _If behavior has input data list it here_
    - _eg, Flee - nearest Agent2_
-- Obstacles - _List all obstacle types this state avoids_
+- Obstacles - _Bounds_
 - Seperation - _List all agents this state seperates from_
    
 #### State Transistions
