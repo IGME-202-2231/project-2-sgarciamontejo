@@ -11,14 +11,13 @@ _REPLACE OR REMOVE EVERYTING BETWEEN "\_"_
 
 ## Simulation Design
 
-_Bees wandering around the scene looking for pollen. Player can interact with the scene by placing flowers and bears, which will change the behavior of the bees.
+_Bees wandering around the scene looking for nectar. Player can interact with the scene by placing flowers and bears, which will change the behavior of the bees.
 They will be attracted to the flowers, and will run away from the bear. The bear will attack the hives of the bees, and if he is successful in destroying the hive, all the bees on screen will attack the bear._
 
 ### Controls
 
--   _List all of the actions the player can have in your simulation_
-    -   _Include how to preform each action ( keyboard, mouse, UI Input )_
-    -   _Include what impact an action has in the simulation ( if is could be unclear )_
+-   _Left Click - Place Flower (Bees will be attracted to it)_
+-   _Right Click - Place Bear (Will attack hives)_
 
 ## _Bee_
 
@@ -30,63 +29,73 @@ _The bee is spawned in by the AgentManager, which will wander around the scene s
 
 #### Steering Behaviors
 
-- _List all behaviors used by this state_
-   - _If behavior has input data list it here_
-   - _eg, Flee - nearest Agent2_
+- _Wander, Flee_
+- Obstacles - _Bounds, Bear_
+- Seperation - _Bee_
+   
+#### State Transistions
+
+- _When there are no Bears or Flowers_
+   
+### _Working_
+
+**Objective:** _Collecting Flowers for the hive._
+
+#### Steering Behaviors
+
+- _Seek, Flee_
+- Obstacles - _Bounds, Bear_
+- Seperation - _Bee_
+   
+#### State Transistions
+
+- _Player places a Flower on screen_
+
+### _Attack_
+
+**Objective:** _Attack the Bear._
+
+#### Steering Behaviors
+
+- _Seek_
 - Obstacles - _Bounds_
-- Seperation - _List all agents this state seperates from_
+- Seperation - _Bee_
    
 #### State Transistions
 
-- _List all the ways this agent can transition to this state_
-   - _eg, When this agent gets within range of Agent2_
-   - _eg, When this agent has reached target of State2_
-   
-### _State 2 Name_
+- _Player places a Bear on screen_
 
-**Objective:** _A brief explanation of this state's objective._
+## _Bear_
+
+_Can be placed on screen, will attack hives._
+
+### _Passive_
+
+**Objective:** _Bear will walk around the scene peacefully_
 
 #### Steering Behaviors
 
-- _List all behaviors used by this state_
-- Obstacles - _List all obstacle types this state avoids_
-- Seperation - _List all agents this state seperates from_
+- _Wander_
+- Obstacles - _Bounds_
+- Seperation - _Bear_
    
 #### State Transistions
 
-- _List all the ways this agent can transition to this state_
+- _No hives on screen_
+   
+### _Attack_
 
-## _Agent 2 Name_
-
-_A brief explanation of this agent._
-
-### _State 1 Name_
-
-**Objective:** _A brief explanation of this state's objective._
+**Objective:** _Bear will attack the nearest hive._
 
 #### Steering Behaviors
 
-- _List all behaviors used by this state_
-- Obstacles - _List all obstacle types this state avoids_
-- Seperation - _List all agents this state seperates from_
+- _Seek_
+- Obstacles - _Bounds_
+- Seperation - _Bear_
    
 #### State Transistions
 
-- _List all the ways this agent can transition to this state_
-   
-### _State 2 Name_
-
-**Objective:** _A brief explanation of this state's objective._
-
-#### Steering Behaviors
-
-- _List all behaviors used by this state_
-- Obstacles - _List all obstacle types this state avoids_
-- Seperation - _List all agents this state seperates from_
-   
-#### State Transistions
-
-- _List all the ways this agent can transition to this state_
+- _Targets the nearest hive on screen_
 
 ## Sources
 
