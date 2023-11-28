@@ -27,7 +27,7 @@ public class PhysicsObject : MonoBehaviour
     {
         height = Camera.main.orthographicSize * 2f;
         width = height * Camera.main.aspect;
-        radius = transform.GetComponent<SpriteRenderer>().sprite.texture.width/2;
+        //radius = (transform.GetComponent<SpriteRenderer>().sprite.texture.width/2) * transform.localScale.x;
     }
 
     // Update is called once per frame
@@ -48,6 +48,8 @@ public class PhysicsObject : MonoBehaviour
         Position += Velocity * Time.deltaTime;
 
         Direction = Velocity.normalized;
+        transform.rotation = Quaternion.LookRotation(Vector3.forward, Direction);
+
         transform.position = Position;
 
         Acceleration = Vector3.zero;

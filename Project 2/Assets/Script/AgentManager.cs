@@ -17,6 +17,7 @@ public class AgentManager : MonoBehaviour
     uint playerCount;*/
 
     List<Agent> agents;
+    public List<Obstacle> obstacles;
 
     //public Sprite[] tagSprites;
 
