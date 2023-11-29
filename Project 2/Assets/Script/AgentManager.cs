@@ -5,7 +5,9 @@ using UnityEngine;
 public class AgentManager : MonoBehaviour
 {
     [SerializeField]
-    Wanderer wandererPrefab;
+    Wanderer beePrefab;
+    [SerializeField]
+    Wanderer bearPrefab;
 
     [SerializeField]
     uint numWanderers;
@@ -16,7 +18,8 @@ public class AgentManager : MonoBehaviour
     [SerializeField]
     uint playerCount;*/
 
-    List<Agent> agents;
+    List<Agent> bees;
+    List<Agent> bears;
     public List<Obstacle> obstacles;
 
     //public Sprite[] tagSprites;
@@ -26,14 +29,15 @@ public class AgentManager : MonoBehaviour
 
     public float CountTimer { get { return countTimer; } }
 
-    public List<Agent> Agents { get { return agents; } }
+    public List<Agent> Bees { get { return bees; } }
+    public List<Agent> Bears { get { return bears; } }
 
     //public Agent itPlayer;
 
     // Start is called before the first frame update
     void Start()
     {
-        agents = new List<Agent>();
+        bees = new List<Agent>();
 
         /*for(uint i = 0; i < numWanderers; i++)
         {
@@ -42,7 +46,7 @@ public class AgentManager : MonoBehaviour
 
         for(uint i = 0; i < numWanderers; i++)
         {
-            SpawnWanderer();
+            SpawnBee();
         }
 
         /*if(agents.Count > 0)
@@ -58,11 +62,18 @@ public class AgentManager : MonoBehaviour
         
     }
 
-    private void SpawnWanderer()
+    private void SpawnBee()
     {
-        Wanderer wanderer = Instantiate(wandererPrefab, transform);
-        wanderer.AgentManager = this;
-        agents.Add(wanderer);
+        Wanderer bee = Instantiate(beePrefab, transform);
+        bee.AgentManager = this;
+        bees.Add(bee);
+    }
+
+    private void SpawnBear()
+    {
+        Wanderer bear = Instantiate(bearPrefab, transform);
+        bee.AgentManager = this;
+        bees.Add(bee);
     }
 
     /*private void SpawnPlayer ()

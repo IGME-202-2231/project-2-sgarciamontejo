@@ -6,6 +6,8 @@ public abstract class Agent : MonoBehaviour
 {
     [SerializeField]
     protected PhysicsObject myPhysicsObject;
+    [SerializeField]
+    bool agentType; //true = Bee | false == Bear
 
     [SerializeField]
     protected float maxForce = 5;
@@ -17,6 +19,7 @@ public abstract class Agent : MonoBehaviour
     float separationRange = 2f;
 
     protected AgentManager agentManager;
+    List<Agent> agents;
     public AgentManager AgentManager { set { agentManager = value; } }
 
     // Start is called before the first frame update
@@ -24,6 +27,15 @@ public abstract class Agent : MonoBehaviour
     {
         wanderAngle = Random.Range(0, Mathf.PI * 2);
         perlinOffset = Random.Range(0, 10000);
+
+        if(agentType)
+        {
+            agents = agentManager.Bees;
+        }
+        else
+        {
+            agents = agentManager
+        }
     }
 
     // Update is called once per frame
