@@ -100,7 +100,7 @@ _Can be placed on screen, will attack hives._
 ## Sources
 
 -   _https://www.flaticon.com/free-icon/bee_1328765_
--   _If an asset is from the Unity store, include a link to the page and the author’s name_
+-   _https://www.flaticon.com/free-icon/bear_523444_
 
 ## Make it Your Own
 
