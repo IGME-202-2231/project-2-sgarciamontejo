@@ -44,6 +44,7 @@ public class PhysicsObject : MonoBehaviour
 
         Velocity += Acceleration * Time.deltaTime;
         Velocity = Vector3.ClampMagnitude(Velocity, Maximum_speed);
+        Velocity.z = 0;
 
         Position += Velocity * Time.deltaTime;
 

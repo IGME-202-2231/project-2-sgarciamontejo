@@ -104,8 +104,8 @@ MonoBehaviour:
   Friction: 0
   Friction_coefficient: 0
   Gravity: 0
-  bounce: 1
-  Maximum_speed: 5
+  bounce: 0
+  Maximum_speed: 10.69
   height: 0
   width: 0
   radius: 1.3
@@ -122,9 +122,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myPhysicsObject: {fileID: 7031385088319846959}
-  maxForce: 15
-  separationRange: 1
+  agentType: 1
+  maxForce: 45
+  separationRange: 0.15
   wanderTime: 1
-  wanderRadius: 2
-  stayInBoundsWeight: 20
-  wanderWeight: 4
+  wanderRadius: 2.34
+  stayInBoundsWeight: 9.1
+  wanderWeight: 0.25
+  avoidWeight: 1

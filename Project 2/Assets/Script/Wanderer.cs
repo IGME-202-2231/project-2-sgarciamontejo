@@ -15,6 +15,11 @@ public class Wanderer : Agent
 
     public float wanderWeight = 1f;
 
+
+    [SerializeField]
+    [Range(0.0f, 100.0f)]
+    float avoidWeight = 1.0f;
+
     float avoidTime = 2.0f;
 
     protected override void CalcSteeringForces()
@@ -22,6 +27,8 @@ public class Wanderer : Agent
         myPhysicsObject.ApplyForce(Wander(wanderTime, wanderRadius, wanderWeight));
         myPhysicsObject.ApplyForce(StayInBounds(stayInBoundsWeight));
         myPhysicsObject.ApplyForce(Separate());
+
+        myPhysicsObject.ApplyForce(AvoidObstacles(avoidTime) * avoidWeight);
     }
 
     private void OnDrawGizmosSelected()
@@ -42,5 +49,11 @@ public class Wanderer : Agent
         Gizmos.DrawWireCube(boxCenter, boxSize);
 
         Gizmos.matrix = Matrix4x4.identity;
+
+        Gizmos.color = Color.red;
+        foreach(Vector3 pos in foundObstacles)
+        {
+            Gizmos.DrawLine(transform.position, pos);
+        }
     }
 }

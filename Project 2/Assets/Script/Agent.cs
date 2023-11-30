@@ -22,19 +22,21 @@ public abstract class Agent : MonoBehaviour
     List<Agent> agents;
     public AgentManager AgentManager { set { agentManager = value; } }
 
+    protected List<Vector3> foundObstacles = new List<Vector3>();
+
     // Start is called before the first frame update
     void Start()
     {
         wanderAngle = Random.Range(0, Mathf.PI * 2);
         perlinOffset = Random.Range(0, 10000);
 
-        if(agentType)
+        if(agentType) // true = bee
         {
             agents = agentManager.Bees;
         }
-        else
+        else //false = bear
         {
-            agents = agentManager
+            agents = agentManager.Bears;
         }
     }
 
@@ -116,7 +118,7 @@ public abstract class Agent : MonoBehaviour
     protected Vector3 Separate()
     {
         Vector3 separateForce = Vector3.zero;
-        foreach(Agent a in agentManager.Agents)
+        foreach(Agent a in agents)
         {
             if(a == this) { continue; }
 
@@ -139,7 +141,7 @@ public abstract class Agent : MonoBehaviour
         float minDist = Mathf.Infinity;
         Agent nearest = null;
 
-        foreach(Agent a in agentManager.Agents)
+        foreach(Agent a in agents)
         {
             if(a == this) { continue; } //ignore self
 
@@ -153,5 +155,43 @@ public abstract class Agent : MonoBehaviour
         }
 
         return nearest;
+    }
+
+    protected Vector3 AvoidObstacles(float avoidTime)
+    {
+        Vector3 avoidForce = Vector3.zero;
+        foundObstacles.Clear();
+
+        Vector3 futurePosition = CalcFuturePosition(avoidTime);
+        float maxDist = Vector3.Distance(transform.position, futurePosition) + myPhysicsObject.radius;
+
+        //detect and avoid
+        foreach (Obstacle obst in agentManager.obstacles)
+        {
+            Vector3 agentToObstacle = obst.transform.position - transform.position;
+            float forwardDot = Vector3.Dot(agentToObstacle, transform.up);
+            float rightDot = Vector3.Dot(agentToObstacle, transform.right);
+
+            if(forwardDot >= -obst.radius &&
+               forwardDot <= (maxDist + obst.radius) &&
+               Mathf.Abs(rightDot) <= (myPhysicsObject.radius + obst.radius))
+            {
+                //refine this to only obstacles in the way
+                foundObstacles.Add(obst.transform.position);
+
+                if(rightDot > 0)
+                {
+                    //go left
+                    avoidForce += transform.right * -1;
+                } 
+                else
+                {
+                    //go right
+                    avoidForce += transform.right;
+                }
+            }
+        }
+
+        return avoidForce;
     }
 }

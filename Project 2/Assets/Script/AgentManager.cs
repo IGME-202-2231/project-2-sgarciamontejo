@@ -72,8 +72,8 @@ public class AgentManager : MonoBehaviour
     private void SpawnBear()
     {
         Wanderer bear = Instantiate(bearPrefab, transform);
-        bee.AgentManager = this;
-        bees.Add(bee);
+        bear.AgentManager = this;
+        bees.Add(bear);
     }
 
     /*private void SpawnPlayer ()
