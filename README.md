@@ -99,8 +99,9 @@ _Can be placed on screen, will attack hives._
 
 ## Sources
 
--   _https://www.flaticon.com/free-icon/bee_1328765_
--   _https://www.flaticon.com/free-icon/bear_523444_
+-   Bee - _https://www.flaticon.com/free-icon/bee_1328765_
+-   Bear - _https://www.flaticon.com/free-icon/bear_523444_
+-   Background - _https://www.vecteezy.com/vector-art/7162597_
 
 ## Make it Your Own
 
