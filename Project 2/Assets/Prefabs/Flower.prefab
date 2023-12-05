@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6991590591112903322}
   - component: {fileID: 7794263086147884710}
   m_Layer: 0
-  m_Name: Obstacle
+  m_Name: Flower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 57f8befb92b364ca1bcae0f34c27e2d3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a5d9b468563df5f4290540b5f8021dfa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
