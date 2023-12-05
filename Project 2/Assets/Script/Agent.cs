@@ -10,7 +10,9 @@ public abstract class Agent : MonoBehaviour
     bool agentType; //true = Bee | false == Bear
 
     [SerializeField]
-    protected float maxForce = 5;
+    protected float maxForce = 20;
+
+    protected Vector3 totalForce = Vector3.zero;
 
     float wanderAngle;
     float perlinOffset;
@@ -44,6 +46,8 @@ public abstract class Agent : MonoBehaviour
     void Update()
     {
         CalcSteeringForces();
+
+        myPhysicsObject.ApplyForce(totalForce);
     }
 
     protected abstract void CalcSteeringForces();
@@ -112,7 +116,7 @@ public abstract class Agent : MonoBehaviour
 
     protected Vector3 CalcFuturePosition(float timeToLookAhead = 1f)
     {
-        return transform.position + myPhysicsObject.Velocity * timeToLookAhead;
+        return transform.position + (myPhysicsObject.Velocity * timeToLookAhead);
     }
 
     protected Vector3 Separate()
@@ -179,15 +183,17 @@ public abstract class Agent : MonoBehaviour
                 //refine this to only obstacles in the way
                 foundObstacles.Add(obst.transform.position);
 
+                float dist = Vector3.Distance(transform.position, obst.transform.position);
+
                 if(rightDot > 0)
                 {
                     //go left
-                    avoidForce += transform.right * -1;
+                    avoidForce += (transform.right * -1) / dist ;
                 } 
                 else
                 {
                     //go right
-                    avoidForce += transform.right;
+                    avoidForce += (transform.right / dist);
                 }
             }
         }

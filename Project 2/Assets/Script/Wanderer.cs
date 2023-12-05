@@ -19,29 +19,37 @@ public class Wanderer : Agent
     [SerializeField]
     [Range(0.0f, 100.0f)]
     float avoidWeight = 1.0f;
-
+    [SerializeField]
     float avoidTime = 2.0f;
 
     protected override void CalcSteeringForces()
     {
-        myPhysicsObject.ApplyForce(Wander(wanderTime, wanderRadius, wanderWeight));
-        myPhysicsObject.ApplyForce(StayInBounds(stayInBoundsWeight));
-        myPhysicsObject.ApplyForce(Separate());
+        totalForce += Wander(wanderTime, wanderRadius, wanderWeight);
+        totalForce += StayInBounds(stayInBoundsWeight);
+        totalForce += Separate();
 
-        myPhysicsObject.ApplyForce(AvoidObstacles(avoidTime) * avoidWeight);
+        totalForce += AvoidObstacles(avoidTime) * avoidWeight;
     }
 
     private void OnDrawGizmosSelected()
     {
-        /*Gizmos.color = Color.white;
-        Gizmos.DrawWireSphere(CalcFuturePosition(wanderTime), wanderRadius);
-        Gizmos.DrawLine(transform.position, wandertarget);*/
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, myPhysicsObject.radius);
 
         Vector3 futurePosition = CalcFuturePosition(avoidTime);
         float dist = Vector3.Distance(transform.position, futurePosition) + myPhysicsObject.radius;
 
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(transform.position, futurePosition);
 
-        Vector3 boxSize = new Vector3(myPhysicsObject.radius * 2, dist, myPhysicsObject.radius * 2);
+
+        Vector3 wanderTarget = CalcFuturePosition(wanderTime);
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireSphere(wanderTarget, wanderRadius);
+        Gizmos.DrawLine(transform.position,wanderTarget);
+
+
+        Vector3 boxSize = new Vector3(myPhysicsObject.radius * 6, dist, 0);
         Vector3 boxCenter = new Vector3(0, dist / 2, 0);
 
         Gizmos.color = Color.green;
