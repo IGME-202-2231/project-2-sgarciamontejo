@@ -141,26 +141,47 @@ public abstract class Agent : MonoBehaviour
         return separateForce;
     }
 
-    protected Agent FindClosest()
+    protected GameObject FindClosestFlower()
     {
         float minDist = Mathf.Infinity;
-        Agent nearest = null;
+        GameObject nearest = null;
 
-        foreach(Agent a in agents)
+        foreach(GameObject flower in agentManager.flowers)
         {
-            if(a == this) { continue; } //ignore self
+            if(flower == this) { continue; } //ignore self
 
-            float dist = Vector2.Distance(transform.position, a.transform.position);
+            float dist = Vector2.Distance(transform.position, flower.transform.position);
 
             if (dist < minDist)
             {
-                minDist = dist; 
-                nearest = a;
+                minDist = dist;
+                nearest = flower;
             }
         }
 
         return nearest;
     }
+
+    /*protected GameObject FindClosestBear()
+    {
+        float minDist = Mathf.Infinity;
+        Agent nearest = null;
+
+        foreach (Agent a in agentManager.Bears)
+        {
+            if (a == this) { continue; } //ignore self
+
+            float dist = Vector2.Distance(transform.position, a.transform.position);
+
+            if (dist < minDist)
+            {
+                minDist = dist;
+                nearest = a;
+            }
+        }
+
+        return (GameObject)nearest;
+    }*/
 
     protected Vector3 AvoidBear(float avoidTime)
     {

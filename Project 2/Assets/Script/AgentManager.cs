@@ -22,7 +22,7 @@ public class AgentManager : MonoBehaviour
     public List<Agent> bears;
 
     public List<GameObject> flowers;
-    public List<Obstacle> obstacles;
+    //public List<Obstacle> obstacles;
 
     [SerializeField]
     private float countTimer;

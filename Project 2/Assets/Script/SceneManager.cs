@@ -59,7 +59,7 @@ public class SceneManager : MonoBehaviour
         {
             cooldownTimestamp1 = Time.time + cooldown; //firerate - cooldown
 
-            Agent bear = Instantiate(bearPrefab, mousePos, Quaternion.identity);
+            Bear bear = (Bear)Instantiate(bearPrefab, mousePos, Quaternion.identity);
             agentManager.bears.Add(bear);
             bear.AgentManager = agentManager;
         }

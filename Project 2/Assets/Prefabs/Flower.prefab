@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2248664015523309008}
   - component: {fileID: 6991590591112903322}
-  - component: {fileID: 7794263086147884710}
+  - component: {fileID: 18798500343356329}
   m_Layer: 0
   m_Name: Flower
   m_TagString: Untagged
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7794263086147884710
+--- !u!114 &18798500343356329
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,4 +97,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd3e956a5c0416d49b5e57de80c0873c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.2
+  radius: 0.3
+  sr: {fileID: 0}

@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Bee : Agent
 {
+    public enum BeeStates
+    {
+        Passive,
+        Work,
+        Attack
+    }
+
     [SerializeField]
     float wanderTime = 1f;
 
@@ -22,13 +29,50 @@ public class Bee : Agent
     [SerializeField]
     float avoidTime = 2.0f;
 
+    BeeStates currentState;
+
     protected override void CalcSteeringForces()
     {
-        totalForce += Wander(wanderTime, wanderRadius, wanderWeight);
-        totalForce += StayInBounds(stayInBoundsWeight);
-        totalForce += Separate();
+        switch(currentState)
+        {
+            case BeeStates.Passive:
+                totalForce += Wander(wanderTime, wanderRadius, wanderWeight);
+                totalForce += StayInBounds(stayInBoundsWeight);
+                totalForce += Separate();
 
-        totalForce += AvoidBear(avoidTime) * avoidWeight;
+                totalForce += AvoidBear(avoidTime) * avoidWeight;
+
+                if(agentManager.flowers.Count > 0 && agentManager.Bears.Count == 0)
+                {
+                    SetState(BeeStates.Work);
+                }
+                else if(agentManager.Bears.Count > 0)
+                {
+                    SetState(BeeStates.Attack);
+                }
+                break;
+            case BeeStates.Work:
+                totalForce += Seek(FindClosestFlower());
+
+                totalForce += StayInBounds(stayInBoundsWeight);
+                totalForce += Separate();
+
+                totalForce += AvoidBear(avoidTime) * avoidWeight;
+
+                break;
+            /*case BeeStates.Attack:
+                totalForce += Seek(FindClosestBear());
+                totalForce += StayInBounds(stayInBoundsWeight);
+                totalForce += Separate();
+                break;*/
+        }
+
+
+    }
+
+    public void SetState(BeeStates state)
+    {
+        currentState = state;
     }
 
     private void OnDrawGizmosSelected()
