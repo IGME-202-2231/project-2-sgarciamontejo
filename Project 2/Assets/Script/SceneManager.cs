@@ -12,12 +12,16 @@ public class SceneManager : MonoBehaviour
     AgentManager agentManager;
 
     [SerializeField]
-    Obstacle bearPrefab;
+    Agent bearPrefab;
+
+    [SerializeField]
+    GameObject flowerPrefab;
 
     Vector3 mousePos;
 
     float cooldown = 2f;
-    float cooldownTimestamp;
+    float cooldownTimestamp1; //bear
+    float cooldownTimestamp2; //flower
 
     // Start is called before the first frame update
     void Start()
@@ -40,17 +44,24 @@ public class SceneManager : MonoBehaviour
 
     public void onLeftClick()
     {
+        if (!(Time.time < cooldownTimestamp2))
+        {
+            cooldownTimestamp2 = Time.time + cooldown; //firerate - cooldown
 
+            GameObject flower = Instantiate(flowerPrefab, mousePos, Quaternion.identity);
+            agentManager.flowers.Add(flower);
+        }
     }
 
     public void onRightClick() // spawn bear
     {
-        if (!(Time.time < cooldownTimestamp))
+        if (!(Time.time < cooldownTimestamp1))
         {
-            cooldownTimestamp = Time.time + cooldown; //firerate - cooldown
+            cooldownTimestamp1 = Time.time + cooldown; //firerate - cooldown
 
-            Obstacle bear = Instantiate(bearPrefab, mousePos, Quaternion.identity);
-            agentManager.obstacles.Add(bear);
+            Agent bear = Instantiate(bearPrefab, mousePos, Quaternion.identity);
+            agentManager.bears.Add(bear);
+            bear.AgentManager = agentManager;
         }
     }
 }

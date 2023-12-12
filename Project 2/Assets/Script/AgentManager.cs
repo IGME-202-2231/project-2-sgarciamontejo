@@ -5,12 +5,12 @@ using UnityEngine;
 public class AgentManager : MonoBehaviour
 {
     [SerializeField]
-    Wanderer beePrefab;
+    Bee beePrefab;
     [SerializeField]
-    Wanderer bearPrefab;
+    Bear bearPrefab;
 
     [SerializeField]
-    uint numWanderers;
+    uint numBees;
 
     /*[SerializeField]
     TagPlayer playerPrefab;
@@ -19,18 +19,18 @@ public class AgentManager : MonoBehaviour
     uint playerCount;*/
 
     List<Agent> bees;
-    List<Agent> bears;
-    public List<Obstacle> obstacles;
+    public List<Agent> bears;
 
-    //public Sprite[] tagSprites;
+    public List<GameObject> flowers;
+    public List<Obstacle> obstacles;
 
     [SerializeField]
     private float countTimer;
-
     public float CountTimer { get { return countTimer; } }
 
     public List<Agent> Bees { get { return bees; } }
     public List<Agent> Bears { get { return bears; } }
+    public List<GameObject> Flowers {  get { return flowers; } }
 
     //public Agent itPlayer;
 
@@ -38,22 +38,12 @@ public class AgentManager : MonoBehaviour
     void Start()
     {
         bees = new List<Agent>();
+        bears = new List<Agent>();
 
-        /*for(uint i = 0; i < numWanderers; i++)
-        {
-            SpawnWanderer();
-        }*/
-
-        for(uint i = 0; i < numWanderers; i++)
+        for(uint i = 0; i < numBees; i++)
         {
             SpawnBee();
         }
-
-        /*if(agents.Count > 0)
-        {
-            ((TagPlayer)agents[0]).SetState(TagStates.Counting);
-            itPlayer = agents[0];
-        }*/
     }
 
     // Update is called once per frame
@@ -64,22 +54,8 @@ public class AgentManager : MonoBehaviour
 
     private void SpawnBee()
     {
-        Wanderer bee = Instantiate(beePrefab, transform);
+        Bee bee = Instantiate(beePrefab, transform);
         bee.AgentManager = this;
         bees.Add(bee);
     }
-
-    private void SpawnBear()
-    {
-        Wanderer bear = Instantiate(bearPrefab, transform);
-        bear.AgentManager = this;
-        bees.Add(bear);
-    }
-
-    /*private void SpawnPlayer ()
-    {
-        TagPlayer player = Instantiate(playerPrefab, transform);
-        player.AgentManager = this;
-        agents.Add(player);
-    }*/
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wanderer : Agent
+public class Bear : Agent
 {
     [SerializeField]
     float wanderTime = 1f;
@@ -16,9 +16,9 @@ public class Wanderer : Agent
     public float wanderWeight = 1f;
 
 
-    [SerializeField]
+    /*[SerializeField]
     [Range(0.0f, 100.0f)]
-    float avoidWeight = 1.0f;
+    float avoidWeight = 1.0f;*/
     [SerializeField]
     float avoidTime = 2.0f;
 
@@ -28,7 +28,6 @@ public class Wanderer : Agent
         totalForce += StayInBounds(stayInBoundsWeight);
         totalForce += Separate();
 
-        totalForce += AvoidObstacles(avoidTime) * avoidWeight;
     }
 
     private void OnDrawGizmosSelected()

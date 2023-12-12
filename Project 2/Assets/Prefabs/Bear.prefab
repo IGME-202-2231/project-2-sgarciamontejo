@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3572488757267927536}
   - component: {fileID: 4441628731741579716}
-  - component: {fileID: 6159404472905611086}
+  - component: {fileID: 7900313594852608746}
+  - component: {fileID: 473377267982381634}
   m_Layer: 0
   m_Name: Bear
   m_TagString: Untagged
@@ -85,7 +86,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6159404472905611086
+--- !u!114 &7900313594852608746
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,7 +95,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 2015380415302795505}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd3e956a5c0416d49b5e57de80c0873c, type: 3}
+  m_Script: {fileID: 11500000, guid: fc5fbba4a667e8146bf32a5a79c91719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Position: {x: 0, y: 0, z: 0}
+  Velocity: {x: 0, y: 0, z: 0}
+  Mass: 8
+  Friction: 0
+  Friction_coefficient: 0
+  Gravity: 0
+  bounce: 0
+  Maximum_speed: 2
+  height: 0
+  width: 0
   radius: 0.76
+--- !u!114 &473377267982381634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015380415302795505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cc876d8bd94e9441b2fb0fb06af3097, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myPhysicsObject: {fileID: 7900313594852608746}
+  agentType: 0
+  maxForce: 20
+  separationRange: 2
+  wanderTime: 1
+  wanderRadius: 1
+  stayInBoundsWeight: 50
+  wanderWeight: 1
+  avoidTime: 2

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7272169370352672822}
   - component: {fileID: 3617841449618904136}
   - component: {fileID: 7031385088319846959}
-  - component: {fileID: 9177000307452514527}
+  - component: {fileID: -988157383629916120}
   m_Layer: 0
   m_Name: Bee
   m_TagString: Untagged
@@ -109,7 +109,7 @@ MonoBehaviour:
   height: 0
   width: 0
   radius: 0.28
---- !u!114 &9177000307452514527
+--- !u!114 &-988157383629916120
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

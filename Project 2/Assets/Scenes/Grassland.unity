@@ -123,137 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &425382334
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 425382336}
-  - component: {fileID: 425382335}
-  - component: {fileID: 425382337}
-  - component: {fileID: 425382338}
-  m_Layer: 0
-  m_Name: Bear
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!212 &425382335
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 425382334}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: dc82da859f83c0547b5d48ff015070bb, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 5.12, y: 5.12}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!4 &425382336
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 425382334}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.31, y: 0.31, z: 0.31}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &425382337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 425382334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc5fbba4a667e8146bf32a5a79c91719, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Position: {x: 0, y: 0, z: 0}
-  Velocity: {x: 0, y: 0, z: 0}
-  Mass: 20
-  Friction: 0
-  Friction_coefficient: 0
-  Gravity: 0
-  bounce: 0
-  Maximum_speed: 2
-  height: 0
-  width: 0
-  radius: 0
---- !u!114 &425382338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 425382334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e80c04025014c13468d7a3f9b3fa7f50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myPhysicsObject: {fileID: 425382337}
-  agentType: 0
-  maxForce: 5
-  separationRange: 2
-  wanderTime: 1
-  wanderRadius: 1
-  stayInBoundsWeight: 50
-  wanderWeight: 1
-  avoidWeight: 1
-  avoidTime: 2
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,9 +244,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b42d67d9272dcc14eb1c277f28c23a5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beePrefab: {fileID: 9177000307452514527, guid: 75d365b29ad9f6e4c93a5be5adb636a1, type: 3}
-  bearPrefab: {fileID: 0}
-  numWanderers: 5
+  beePrefab: {fileID: -988157383629916120, guid: 75d365b29ad9f6e4c93a5be5adb636a1, type: 3}
+  bearPrefab: {fileID: 473377267982381634, guid: eacf4c0a5681b2848a7844599e92f5ce, type: 3}
+  numBees: 5
+  bears: []
+  flowers: []
   obstacles: []
   countTimer: 0
 --- !u!4 &736847237
@@ -488,7 +359,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agentManager: {fileID: 736847236}
-  bearPrefab: {fileID: 6159404472905611086, guid: eacf4c0a5681b2848a7844599e92f5ce, type: 3}
+  bearPrefab: {fileID: 473377267982381634, guid: eacf4c0a5681b2848a7844599e92f5ce, type: 3}
+  flowerPrefab: {fileID: 1527761318629231690, guid: 8ed13581d06ad6440a10e4738e2318a1, type: 3}
 --- !u!4 &1745689253
 Transform:
   m_ObjectHideFlags: 0
@@ -502,7 +374,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1945081019
 GameObject:
@@ -586,5 +458,5 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -31,15 +31,6 @@ public abstract class Agent : MonoBehaviour
     {
         wanderAngle = Random.Range(0, Mathf.PI * 2);
         perlinOffset = Random.Range(0, 10000);
-
-        if(agentType) // true = bee
-        {
-            agents = agentManager.Bees;
-        }
-        else //false = bear
-        {
-            agents = agentManager.Bears;
-        }
     }
 
     // Update is called once per frame
@@ -122,6 +113,16 @@ public abstract class Agent : MonoBehaviour
     protected Vector3 Separate()
     {
         Vector3 separateForce = Vector3.zero;
+        agents = new List<Agent>();
+        if(agentType) //true = bee | false = bear
+        {
+            agents = agentManager.Bees;
+        }
+        else
+        {
+            agents = agentManager.Bears;
+        }
+
         foreach(Agent a in agents)
         {
             if(a == this) { continue; }
@@ -161,7 +162,7 @@ public abstract class Agent : MonoBehaviour
         return nearest;
     }
 
-    protected Vector3 AvoidObstacles(float avoidTime)
+    protected Vector3 AvoidBear(float avoidTime)
     {
         Vector3 avoidForce = Vector3.zero;
         foundObstacles.Clear();
@@ -170,20 +171,20 @@ public abstract class Agent : MonoBehaviour
         float maxDist = Vector3.Distance(transform.position, futurePosition) + myPhysicsObject.radius;
 
         //detect and avoid
-        foreach (Obstacle obst in agentManager.obstacles)
+        foreach (Agent bear in agentManager.Bears)
         {
-            Vector3 agentToObstacle = obst.transform.position - transform.position;
+            Vector3 agentToObstacle = bear.transform.position - transform.position;
             float forwardDot = Vector3.Dot(agentToObstacle, transform.up);
             float rightDot = Vector3.Dot(agentToObstacle, transform.right);
 
-            if(forwardDot >= -obst.radius &&
-               forwardDot <= (maxDist + obst.radius) &&
-               Mathf.Abs(rightDot) <= (myPhysicsObject.radius + obst.radius))
+            if(forwardDot >= -bear.myPhysicsObject.radius &&
+               forwardDot <= (maxDist + bear.myPhysicsObject.radius) &&
+               Mathf.Abs(rightDot) <= (myPhysicsObject.radius + bear.myPhysicsObject.radius))
             {
                 //refine this to only obstacles in the way
-                foundObstacles.Add(obst.transform.position);
+                foundObstacles.Add(bear.transform.position);
 
-                float dist = Vector3.Distance(transform.position, obst.transform.position);
+                float dist = Vector3.Distance(transform.position, bear.transform.position);
 
                 if(rightDot > 0)
                 {
