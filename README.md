@@ -1,8 +1,4 @@
-# Project _NAME_
-
-[Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet)
-
-_REPLACE OR REMOVE EVERYTING BETWEEN "\_"_
+# Bees and Bears
 
 ### Student Info
 
@@ -113,5 +109,5 @@ _List any errors, lack of error checking, or specific information that I need to
 
 ### Requirements not completed
 
-_If you did not complete a project requirement, notate that here_
+_Bees leave the screen when a bear is spawned. Did not add hives. Flowers cannot be collected by the bees._
 
